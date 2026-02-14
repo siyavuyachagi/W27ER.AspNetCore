@@ -1,6 +1,6 @@
 ﻿namespace Infrastructure.Repositories
 {
-    internal class UserRepository
+    public class UserRepository
     {
     }
 }

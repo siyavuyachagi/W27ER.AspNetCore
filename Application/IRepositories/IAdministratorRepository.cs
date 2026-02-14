@@ -1,6 +1,6 @@
 ﻿namespace Application.IRepositories
 {
-    internal interface IAdministratorRepository
+    public interface IAdministratorRepository
     {
     }
 }

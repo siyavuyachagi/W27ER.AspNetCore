@@ -1,6 +1,6 @@
 ﻿namespace Application.IServices
 {
-    internal interface IAuthService
+    public interface IAuthService
     {
     }
 }

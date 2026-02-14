@@ -1,6 +1,8 @@
-﻿namespace Infrastructure.Services
+﻿using Application.IServices;
+
+namespace Infrastructure.Services
 {
-    internal class AuthService
+    public class AuthService: IAuthService
     {
     }
 }

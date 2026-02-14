@@ -1,6 +1,6 @@
 ﻿namespace Application.IRepositories
 {
-    internal interface IPostRepository
+    public interface IPostRepository
     {
     }
 }
