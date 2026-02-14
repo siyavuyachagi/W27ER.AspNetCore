@@ -1,0 +1,6 @@
+@Ward27EmploymentRegistry_HostAddress = http://localhost:5162
+
+GET {{Ward27EmploymentRegistry_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

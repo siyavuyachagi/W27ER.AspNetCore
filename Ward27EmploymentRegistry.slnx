@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="Application/Application.csproj" />
+  <Project Path="Domain/Domain.csproj" />
+  <Project Path="Infrastructure.Seed/Infrastructure.Seed.csproj" />
+  <Project Path="Infrastructure/Infrastructure.csproj" />
+  <Project Path="Ward27EmploymentRegistry/Ward27EmploymentRegistry.csproj" />
+</Solution>
