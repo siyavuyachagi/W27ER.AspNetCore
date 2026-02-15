@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Entities.Identity;
+
+namespace Domain.Entities
 {
-    internal class User
+    public class User: ApplicationUser
     {
     }
 }

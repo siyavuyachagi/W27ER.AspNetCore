@@ -29,5 +29,11 @@ namespace Infrastructure.Data
 
 
         }
+
+        #region Database Tables
+
+        public DbSet<RefreshToken> RefreshTokens { get; set; }
+
+        #endregion
     }
 }

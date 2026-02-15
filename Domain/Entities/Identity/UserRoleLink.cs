@@ -1,6 +1,10 @@
-﻿namespace Domain.Entities.Identity
+﻿using Microsoft.AspNetCore.Identity;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Entities.Identity
 {
-    internal class UserRoleLink
+    [Table("AspNetUserRoleLinks")]
+    public class UserRoleLink: IdentityUserRole<Guid>
     {
     }
 }

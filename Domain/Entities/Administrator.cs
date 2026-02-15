@@ -1,6 +1,8 @@
-﻿namespace Domain.Entities
+﻿using Domain.Entities.Identity;
+
+namespace Domain.Entities
 {
-    internal class Administrator
+    public class Administrator: ApplicationUser
     {
     }
 }
