@@ -55,10 +55,18 @@ namespace Infrastructure.Data
             });
 
 
-            //builder.Entity<UserRoleLink>(entity =>
-            //{
-            //    entity.HasOne(x => x.User)
-            //});
+            builder.Entity<UserRoleLink>(entity =>
+            {
+                entity.HasOne(ur => ur.ApplicationUser)
+                    .WithMany(x => x.UserRoleLinks)
+                    .HasForeignKey(ur => ur.UserId)
+                    .OnDelete(DeleteBehavior.Cascade);
+
+                entity.HasOne(ur => ur.Role)
+                    .WithMany(x => x.UserRoleLinks)
+                    .HasForeignKey(ur => ur.RoleId)
+                    .OnDelete(DeleteBehavior.Cascade);
+            });
 
             Seed.ProgramEntry.Seed(builder);
         }

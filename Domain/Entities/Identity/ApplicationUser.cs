@@ -15,5 +15,8 @@ namespace Domain.Entities.Identity
         public Guid? PhysicalAddressId { get; set; }
         [ForeignKey(nameof(PhysicalAddressId))]
         public PhysicalAddress? PhysicalAddress { get; set; }
+
+        // Navigations
+        public ICollection<UserRoleLink> UserRoleLinks { get; set; } = [];
     }
 }
