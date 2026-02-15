@@ -4,12 +4,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Seed
 {
-    internal static class Entry
+    public static class ProgramEntry
     {
         public static void Seed(ModelBuilder builder)
         {
             UserRoles.Seed(builder);
             DefaultUser.Seed(builder);
+            Data.FakerEntry.Seed(builder);
         }
     }
 }

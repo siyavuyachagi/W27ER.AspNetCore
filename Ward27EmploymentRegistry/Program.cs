@@ -175,6 +175,8 @@ if (app.Environment.IsDevelopment())
     // Swagger UI
     app.UseSwagger();
     app.UseSwaggerUI();
+
+    app.UseStaticFiles();
 }
 
 app.UseHttpsRedirection();

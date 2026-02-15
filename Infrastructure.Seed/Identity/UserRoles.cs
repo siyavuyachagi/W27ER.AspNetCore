@@ -1,7 +1,6 @@
 ﻿using Domain.Constants;
 using Domain.Entities.Identity;
 using Infrastructure.Seed.Utility;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 namespace Infrastructure.Seed.Identity

@@ -6,7 +6,7 @@ using System.Security.AccessControl;
 namespace Domain.Entities
 {
     /// <summary>
-    /// Base entity for all media resources (Images, Videos, Documents) with Cloudinary integration
+    /// Base entity for all media resources (Images, Videos, Files) with Cloudinary integration
     /// </summary>
     public class Resource
     {
@@ -23,6 +23,10 @@ namespace Domain.Entities
         /// </summary>
         public string Extension { get; set; } = default!;
 
+        /// <summary>
+        /// Type of resource (Image, Video, Document, Audio)
+        /// </summary>
+        public ResourceType ResourceType { get; set; }
 
         /// <summary>
         /// MIME type (e.g., "image/jpeg", "video/mp4", "application/pdf")
@@ -66,7 +70,7 @@ namespace Domain.Entities
         /// <summary>
         /// Cloudinary version number
         /// </summary>
-        public long? CloudinaryVersion { get; set; }
+        public string? CloudinaryVersion { get; set; }
 
         /// <summary>
         /// Cloudinary asset ID
@@ -174,7 +178,6 @@ namespace Domain.Entities
         /// <summary>
         /// Related entity type (e.g., "ResidentProfile", "WorkOpportunity")
         /// </summary>
-        [MaxLength(100)]
         public string? RelatedEntityType { get; set; }
 
         // ============================================
@@ -207,7 +210,7 @@ namespace Domain.Entities
         // AUDIT FIELDS
         // ============================================
 
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+        public DateTime UploadedAt { get; set; } = DateTime.UtcNow;
         public DateTime? UpdatedAt { get; set; }
         public DateTime? DeletedAt { get; set; }
         public bool IsDeleted { get; set; } = false;
@@ -219,12 +222,14 @@ namespace Domain.Entities
         /// <summary>
         /// Full filename with extension
         /// </summary>
+        [NotMapped]
         public string FullFileName => $"{Name}.{Extension}";
 
         /// <summary>
         /// File size in human-readable format
         /// </summary>
-        public string FormattedFileSize
+        [NotMapped]
+        public string FileSizeFormatted
         {
             get
             {
@@ -241,6 +246,7 @@ namespace Domain.Entities
         /// <summary>
         /// Video duration in human-readable format
         /// </summary>
+        [NotMapped]
         public string? DurationFormatted
         {
             get
@@ -252,35 +258,6 @@ namespace Domain.Entities
                     return duration.ToString(@"hh\:mm\:ss");
                 return duration.ToString(@"mm\:ss");
             }
-        }
-
-        /// <summary>
-        /// Gets Cloudinary URL with specific transformations
-        /// </summary>
-        /// <param name="transformation">Cloudinary transformation string</param>
-        /// <returns>Transformed URL</returns>
-        public string GetTransformedUrl(string transformation)
-        {
-            if (string.IsNullOrWhiteSpace(transformation))
-                return CloudinarySecureUrl;
-
-            // Insert transformation into URL
-            var urlParts = CloudinarySecureUrl.Split(new[] { "/upload/" }, StringSplitOptions.None);
-            if (urlParts.Length == 2)
-                return $"{urlParts[0]}/upload/{transformation}/{urlParts[1]}";
-
-            return CloudinarySecureUrl;
-        }
-
-        /// <summary>
-        /// Gets thumbnail URL with specific size
-        /// </summary>
-        /// <param name="width">Thumbnail width</param>
-        /// <param name="height">Thumbnail height</param>
-        /// <returns>Thumbnail URL</returns>
-        public string GetThumbnailUrl(int width = 200, int height = 200)
-        {
-            return GetTransformedUrl($"w_{width},h_{height},c_fill,q_auto");
         }
     }
 }
