@@ -147,7 +147,7 @@ namespace Infrastructure.Services
             }
         }
 
-        public async Task<GenericResult<List<Resource>>> GetMediaByTagAsync(string tag, ResourceType resourceType, CancellationToken cancellationToken)
+        public async Task<GenericResult<List<CloudinaryDotNet.Actions.Resource>>> GetMediaByTagAsync(string tag, ResourceType resourceType, CancellationToken cancellationToken)
         {
             try
             {
@@ -155,19 +155,19 @@ namespace Infrastructure.Services
 
                 if (result.Error != null)
                 {
-                    return GenericResult<List<Resource>>.Failure(errors: new List<string> { result.Error.Message });
+                    return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { result.Error.Message });
                 }
 
                 if (result.Resources == null || !result.Resources.Any())
                 {
-                    return GenericResult<List<Resource>>.Failure(errors: new List<string> { "No media found with the specified tag" });
+                    return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { "No media found with the specified tag" });
                 }
 
-                return GenericResult<List<Resource>>.Success(data: result.Resources.ToList());
+                return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Success(data: result.Resources.ToList());
             }
             catch (Exception ex)
             {
-                return GenericResult<List<Resource>>.Failure(errors: new List<string> { ex.Message });
+                return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { ex.Message });
             }
         }
 
@@ -186,7 +186,7 @@ namespace Infrastructure.Services
             return Task.FromResult(GenericResult<string>.Success(url));
         }
 
-        public async Task<GenericResult<List<Resource>>> ListMediaAsync(ResourceType resourceType, int maxResults = 10, CancellationToken cancellationToken = default)
+        public async Task<GenericResult<List<CloudinaryDotNet.Actions.Resource>>> ListMediaAsync(ResourceType resourceType, int maxResults = 10, CancellationToken cancellationToken = default)
         {
             try
             {
@@ -200,19 +200,19 @@ namespace Infrastructure.Services
 
                 if (result.Error != null)
                 {
-                    return GenericResult<List<Resource>>.Failure(errors: new List<string> { result.Error.Message });
+                    return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { result.Error.Message });
                 }
 
                 if (result.Resources == null || !result.Resources.Any())
                 {
-                    return GenericResult<List<Resource>>.Failure(errors: new List<string> { "No media found" });
+                    return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { "No media found" });
                 }
 
-                return GenericResult<List<Resource>>.Success(data: result.Resources.ToList());
+                return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Success(data: result.Resources.ToList());
             }
             catch (Exception ex)
             {
-                return GenericResult<List<Resource>>.Failure(errors: new List<string> { ex.Message });
+                return GenericResult<List<CloudinaryDotNet.Actions.Resource>>.Failure(errors: new List<string> { ex.Message });
             }
         }
     }

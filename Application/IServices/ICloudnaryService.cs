@@ -11,8 +11,8 @@ namespace Application.IServices
         Task<GenericResult<List<ImageUploadResult>>> UploadImagesAsync(List<IFormFile> media, CancellationToken cancellationToken);
         Task<GenericResult<List<VideoUploadResult>>> UploadVideosAsync(List<IFormFile> media, CancellationToken cancellationToken);
         Task<GenericResult<GetResourceResult>> GetMediaAsync(string publicId, ResourceType resourceType, CancellationToken cancellationToken);
-        Task<GenericResult<List<Resource>>> GetMediaByTagAsync(string tag, ResourceType resourceType, CancellationToken cancellationToken);
-        Task<GenericResult<List<Resource>>> ListMediaAsync(ResourceType resourceType, int maxResults = 10, CancellationToken cancellationToken = default);
+        Task<GenericResult<List<CloudinaryDotNet.Actions.Resource>>> GetMediaByTagAsync(string tag, ResourceType resourceType, CancellationToken cancellationToken);
+        Task<GenericResult<List<CloudinaryDotNet.Actions.Resource>>> ListMediaAsync(ResourceType resourceType, int maxResults = 10, CancellationToken cancellationToken = default);
         /// <summary>
         /// Synchronous - just generates URL
         /// </summary>

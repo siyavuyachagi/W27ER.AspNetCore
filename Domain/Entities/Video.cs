@@ -1,6 +1,6 @@
 ﻿namespace Domain.Entities
 {
-    public class Video: MediaResource
+    public class Video: Resource
     {
     }
 }

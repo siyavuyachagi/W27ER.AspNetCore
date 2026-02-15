@@ -1,7 +1,9 @@
-﻿using Domain.Entities.Identity;
+﻿using Domain.Entities;
+using Domain.Entities.Identity;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Reflection.Metadata;
 
 namespace Infrastructure.Data
 {
@@ -33,7 +35,10 @@ namespace Infrastructure.Data
         #region Database Tables
 
         public DbSet<RefreshToken> RefreshTokens { get; set; }
-
+        public DbSet<Resource> Resources { get; set; }
+        public DbSet<Image> Images { get; set; }
+        public DbSet<Video> Videos { get; set; }
+        public DbSet<Document> Documents { get; set; }
         #endregion
     }
 }
